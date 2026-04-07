@@ -1,0 +1,123 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "height": 34,
+    "spacing": 4,
+    "margin-top": 5,
+    "margin-bottom": 0,
+    "margin-left": 5,
+    "margin-right": 5,
+
+    "modules-left": [
+        "hyprland/workspaces",
+	"hyprland/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "network",
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "backlight",
+        "battery"
+    ],
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "on-click": "activate",
+        "format": "{id} {icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+
+	"hyprland/window": {
+	  "format": " ",
+	  "max-length": 10,
+	  "truncate": "end",
+	  "empty-text": "Desktop",
+	  "tooltip": true,
+	  "tooltip-format": "Current window: {title}",
+	  "on-click": "hyprctl dispatch workspace previous",
+	  "rewrite": {
+	    ".*Firefox.*": "Firefox"
+	  }
+	},
+
+    "backlight": {
+	"format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": " {:%I:%M %p}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈀 Connected",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "󰖪 Disconnected",
+        "format-alt": "󰈀 {ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{essid} ({signalStrength}%)",
+        "on-click": "kitty nmtui"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "on-click": "pavucontrol",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        }
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true,
+        "interval": 1
+    },
+
+    "memory": {
+        "format": "  {}%",
+        "interval": 1
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    }
+}
+
+
