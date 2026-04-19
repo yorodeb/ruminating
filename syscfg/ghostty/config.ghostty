@@ -1,0 +1,40 @@
+# --- Font ---
+font-family = JetBrainsMono Nerd Font
+font-size = 20
+
+# --- Window ---
+window-padding-x = 14
+window-padding-y = 14
+background-opacity = 0.92
+
+# --- Cursor ---
+cursor-style = block
+
+# --- Colors ---
+background = #0b0f14
+foreground = #cdd6f4
+
+# Normal colors
+palette = 0=#1b1f27
+palette = 1=#ff6b6b
+palette = 2=#a6e3a1
+palette = 3=#f9e2af
+palette = 4=#89b4fa
+palette = 5=#cba6f7
+palette = 6=#94e2d5
+palette = 7=#bac2de
+
+# Bright colors
+palette = 8=#585b70
+palette = 9=#ff7a7a
+palette = 10=#b6f4b1
+palette = 11=#ffe7b3
+palette = 12=#9cc5ff
+palette = 13=#d4b8ff
+palette = 14=#a8f0e6
+palette = 15=#ffffff
+
+# Cursor + selection
+cursor-color = #89b4fa
+selection-background = #1f2630
+selection-foreground = #cdd6f4
