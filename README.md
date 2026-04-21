@@ -22,6 +22,8 @@ A collection of experiments, half-serious ideas, and “what happens if I…” 
 ```
 alias cx='history -c && clear'
 alias ct='sudo journalctl --vacuum-size=300M && sudo logrotate /etc/logrotate.conf'
+
+PS1='\[\e[1;34m\]\W \[\e[38;2;0;255;255m\]-> \[\e[0m\]'
 ```
 
 ---
