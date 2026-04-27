@@ -26,6 +26,14 @@ alias ct='sudo journalctl --vacuum-size=300M && sudo logrotate /etc/logrotate.co
 PS1='\[\e[1;34m\]\W \[\e[38;2;0;255;255m\]-> \[\e[0m\]'
 ```
 
+### Configuring `SSH` Keys:
+- `ssh-keygen -t ed25519 -C "yorodeb@hotmail.com"`
+- `eval "$(ssh-agent -s)"`
+- `ssh-add ~/.ssh/id_ed25519`
+- Copy `~/.ssh/id_ed25519.pub` to *SSH -> **Add New SSH-Key***
+- Update Repository - `git remote set-url origin git@github.com:yorodeb/REPO.git`
+- Testing Connection - `ssh -T git@github.com`
+
 ---
 
 ### ⚙️ Configurations
