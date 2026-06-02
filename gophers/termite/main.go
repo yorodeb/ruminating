@@ -4,24 +4,26 @@ import (
 	"io"
 	"os"
 	"fmt"
-	"bufio"
 	"os/user"
-	"strings"
+	"github.com/chzyer/readline"
 )
 
 func main() {
-	reader := bufio.NewReader(os.Stdin)
 	hostname, _ := os.Hostname()
-	user, _ := user.Current()
-	homepath := "/home/" + user.Username
 
-	for true {
-		CurrentDirectory, _ := os.Getwd()
-		CurrentDirectory = strings.ReplaceAll(CurrentDirectory, homepath, "~")
-		fmt.Printf("%v@%v %v$ ", user.Username, hostname, CurrentDirectory)
+	ptrUser, _ := user.Current()
+	homepath := "/home/" + ptrUser.Username
 
-		input, err := reader.ReadString('\n')
+	reader, err := readline.New("")
+	if err != nil {
+		fmt.Fprintln(os.Stdout, err)
+	}
 
+	for {
+		pluto := fmt.Sprintf("%v@%v %v$ ", ptrUser.Username, hostname, buildPromptPath(homepath))
+		reader.SetPrompt(pluto)
+
+		input, err := reader.Readline()
 		if err != nil {
 			if err == io.EOF {
 				break

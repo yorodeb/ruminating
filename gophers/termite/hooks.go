@@ -30,3 +30,8 @@ func execute(argv string) error {
 
 	return command.Run()
 }
+
+func buildPromptPath(homepath string) string {
+	current, _ := os.Getwd()
+	return strings.ReplaceAll(current, homepath, "~")
+}
