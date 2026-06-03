@@ -22,6 +22,9 @@ func execute(argv string) error {
 			return os.Chdir(home)
 		}
 		return os.Chdir(args[1])
+
+	case "exit":
+		os.Exit(0)
 	}
 
 	command := exec.Command(args[0], args[1:]...)

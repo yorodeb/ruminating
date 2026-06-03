@@ -26,7 +26,7 @@ func main() {
 		input, err := reader.Readline()
 		if err != nil {
 			if err == io.EOF {
-				break
+				os.Exit(0)	
 			}
 			fmt.Fprintln(os.Stdout, err)
 		}
