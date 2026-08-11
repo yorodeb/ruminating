@@ -5,10 +5,10 @@ import (
 )
 
 func main() {
-	greetMsg := salutation()
-	fmt.Println(greetMsg)
+	prgOut := greet()
+	fmt.Println(prgOut)
 }
 
-func salutation() string {
+func greet() string {
 	return "Hello, World!"
 }
