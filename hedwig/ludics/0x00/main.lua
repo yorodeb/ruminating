@@ -4,25 +4,21 @@ function love.load()
 
 	object = {
 		sprite = love.graphics.newImage("sprite.jpg"),
-		x = 0,
-		y = 0
+		x = 10,
+		y = 10
 	}
 
 	object.width = object.sprite:getWidth()
   object.height = object.sprite:getHeight()
 end
 
+local fahh = love.audio.newSource("fahh.mp3", "stream")
 function love.update(dt)
-	if love.keyboard.isDown("right") then
-		object.x = object.x + 500 * dt
-	elseif love.keyboard.isDown("left") then
-		object.x = object.x - 500 * dt
-	end
+	object.x, object.y = love.mouse.getPosition()
 
-	if love.keyboard.isDown("up") then
-		object.y = object.y - 500 * dt
-	elseif love.keyboard.isDown("down") then
-		object.y = object.y + 500 * dt
+	local collision = checkBoundaryCollision(object)
+	if collision then
+		love.audio.play(fahh)
 	end
 
 	object.x = math.max(0, math.min(object.x, love.graphics.getWidth() - object.width))
@@ -37,6 +33,7 @@ end
 --[[
 --User-Defined Functions
 --(1) Closing Windows.
+--(2) Boundary Collision.
 --]]
 
 function love.keypressed(key, scancode, isrepeat)
@@ -48,4 +45,23 @@ function love.keypressed(key, scancode, isrepeat)
 		fullscreen = not fullscreen
 		love.window.setFullscreen(fullscreen, "exclusive")
 	end
+end
+
+function checkBoundaryCollision(object)
+	local sceenWidth = love.graphics.getWidth()
+	local screenHeight = love.graphics.getHeight()
+
+	if object.x <= 0 then
+		return true
+	elseif object.x + object.width >= sceenWidth then
+		return true
+	end
+
+	if object.y <= 0 then
+		return true
+	elseif object.y + object.height >= screenHeight then
+		return true
+	end
+	
+	return false
 end
