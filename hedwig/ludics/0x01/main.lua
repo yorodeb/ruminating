@@ -8,6 +8,7 @@ function love.load()
 		mode = "fill",
 		width = 100,
 		height = 100,
+		color = {1,1,1},
 		x = 100,
 		y = 200,
 	}
@@ -29,6 +30,10 @@ function love.update(dt)
 	object.x = math.max(0, math.min(object.x, love.graphics.getWidth() - object.width))
 	object.y = math.max(0, math.min(object.y, love.graphics.getHeight() - object.height))
 
+	if boundingCheck(object) and love.mouse.isDown(1) then
+		object.color = {math.random(), math.random(), math.random()}
+	end
+
 	position = string.format("x: %.2f, y: %.2f\n", object.x, object.y)
 	if object.x ~= lastx or object.y ~= lasty then
 		logger("position_logs", position)
@@ -37,7 +42,10 @@ function love.update(dt)
 end
 
 function love.draw()
+	love.graphics.setColor(object.color)
 	love.graphics.rectangle(object.mode, object.x, object.y, object.width, object.height)
+
+	love.graphics.setColor(1,1,1)
 	love.graphics.print(position, 10, 10)
 end
 
@@ -64,3 +72,18 @@ function logger(filename, position)
 	fileptr:write(position)
 	fileptr:close()
 end
+
+--[[Bounding Approach for Mouse-Event]]
+function boundingCheck(object)
+	local x,y = love.mouse.getPosition()
+
+	local checkForX = x >= object.x and x <= object.x + object.width
+	local checkForY = y >= object.y and y <= object.y + object.height
+
+	if checkForX and checkForY then
+		return true
+	else
+		return false
+	end
+end
+
