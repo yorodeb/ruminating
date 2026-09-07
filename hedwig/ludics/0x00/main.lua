@@ -37,7 +37,7 @@ end
 --]]
 
 function love.keypressed(key, scancode, isrepeat)
-	if key == "escape" or key == "q" then
+	if key == "escape" then
 		love.event.quit()
 	end
 
