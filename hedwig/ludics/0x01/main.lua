@@ -55,7 +55,7 @@ function love.keypressed(key, scancode, isrepeat)
 	end
 
 	if key == "f" then
-		local fullscreen = not fullscreen
+		fullscreen = not fullscreen
 		love.window.setFullscreen(fullscreen, "exclusive")
 	end
 end
