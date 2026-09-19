@@ -1,4 +1,4 @@
-# Logic League
+# Logic League by HackForge
 
 The *Logic League -- Ideathon* is an idea-generation and problem-solving event designed for Computer Science students.
 
